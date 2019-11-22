@@ -79,6 +79,10 @@ int main(int argc, char *argv[]) {
 			}
 			prevStr = str;
 		}
+		if(count != 1){
+			printf("%7lu ",count);
+			cout<<prevStr<<"\n";
+		}
 	}
 	else if(showcount == 1 && uniqonly == 1){
 		string str = "";
@@ -98,21 +102,80 @@ int main(int argc, char *argv[]) {
 			}
 			prevStr = str;
 		}
-		printf("%7lu ",count);
-		cout << prevStr <<"\n";
+		if(count == 1){
+			printf("%7lu ",count);
+			cout << prevStr <<"\n";
+		}
+
 	}
 	else if(dupsonly == 1 && uniqonly ==1){
 		//duplicate();
 		//unique();
 	}
 	else if(showcount == 1){
-		count();
+		//count();
+		string str = "";
+		getline(cin, str);
+		string prevStr = str;
+		size_t count = 1;
+		while(getline(cin, str)){
+			if(prevStr == str){
+				count++;
+			}
+			else{
+				printf("%7lu ",count);
+				cout << prevStr <<"\n";
+				count = 1;
+
+			}
+			prevStr = str;
+
+		}
+		printf("%7lu ",count);
+		cout << prevStr <<"\n";
 	}
 	else if(dupsonly == 1){
-		duplicate();
+		string str = "";
+		getline(cin, str);
+		string prevStr = str;
+		int count = 1;
+		while(getline(cin, str)){
+			if(prevStr != str){
+				if(count>1){
+					cout << prevStr;
+					cout << "\n";
+					count = 1;
+				}
+			}
+			else{
+				count++;
+			}
+			prevStr = str;
+		}
+		if(count != 1){
+			cout<<prevStr<<"\n";
+		}
 	}
 	else if(uniqonly==1){
-		unique();
+		string str = "";
+		getline(cin, str);
+		string prevStr = str;
+		int count = 1;
+		while(getline(cin, str)){
+			if(prevStr!=str){
+					if(count==1){
+						cout<<prevStr<< "\n";
+					}
+					count = 1;
+			}
+			else{
+				count ++;
+			}
+			prevStr = str;
+		}
+		if(count == 1){
+			cout << prevStr <<"\n";
+		}
 	}
 	else{
 		string str = "";
