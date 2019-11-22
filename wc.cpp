@@ -126,6 +126,9 @@ int main(int argc, char *argv[])
 	if( a != '\n' && a != '\t' && a != ' '){
 		uniqueWords.insert(str);
 	}
+	if(charCount > longestCount){
+		longestCount = charCount;
+	}
 	//cout << '\n';
 	//for(set<string>:: iterator i = uniqueWords.begin(); i != uniqueWords.end(); i++){
 	//	cout << *i << "\n";
