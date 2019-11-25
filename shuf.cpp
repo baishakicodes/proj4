@@ -14,7 +14,7 @@ using std::endl;
 #include <algorithm>
 using std::swap;
 using std::min;
-
+using std::getline;
 static const char* usage =
 "Usage: %s [OPTIONS]...\n"
 "Limited clone of shuf.  Supported options:\n\n"
@@ -72,13 +72,13 @@ int main(int argc, char *argv[]) {
 if(echo == 1){//e
 
 vector <string> V;
-int i;	// this should cover the -e function?
+// this should cover the -e function?
 while (optind < argc){
     V.push_back(argv[optind++]);
 }
 srand(time(0)); // use current time to determine pseudorandom sequence
     // print size of vector random numbers:
-if(BB && count<=V.size()){
+if(count!=1 && count<= V.size()){
    for(int i = 0; i<count; i++){
 
 		int range = rand() % V.size(); //get random # from 0-size
@@ -87,6 +87,7 @@ if(BB && count<=V.size()){
 			V.erase(V.begin() + range);//delete the element
 
 		}
+		return 0;
 	}
 	else{
     while(!V.empty()){
@@ -104,14 +105,14 @@ if(BB && count<=V.size()){
 
 	if(userange == true){//i only integers and provide a range
 vector <int> V;
-int i;
+
 for(int i = rlow; i<=rhigh; i++){
 
 	V.push_back(i);
 }
 srand(time(0)); // use current time to determine pseudorandom sequence
     // print size of vector random numbers:
-if(BB && count<=V.size()){
+if(count!= -1 && count<= V.size()){
    for(int i = 0; i<count; i++){
 
 		int range = rand() % V.size(); //get random # from 0-size
@@ -120,6 +121,7 @@ if(BB && count<=V.size()){
 			V.erase(V.begin() + range);//delete the element
 
 		}
+		return 0;
 	}
 	else{
     while(!V.empty()){
@@ -136,10 +138,39 @@ if(BB && count<=V.size()){
 
 	}
 
+vector <string> V;
+if(BB && count>=V.size()){//ok
+	string x;
+	vector <string> V;
+	while(cin >> x){
 
+		V.push_back(x);
+		//ctrl d to end process of while loop
+		}
+	for(int i = 0; i<count; i++){
 
+		int range = rand() % V.size(); //get random # from 0-size
+			 //assign the number to the index thus changign it
+		cout << V[range] << endl; // print out the value at the index
+			V.erase(V.begin() + range);//de
+	// this will shuffle after running the code and reading stdin, it will output the restricted number of shuffle
 
+		}
 
+	}
+if(argc == 1){//o k
+vector <string> V;
+string x;
+while(getline(cin,x)){
+	V.push_back(x);
+		}
+	while(!V.empty()){
+	int range = rand() % V.size(); //get random # from 0-size
+			 //assign the number to the index thus changign it
+		cout << V[range] << endl; // print out the value at the index
+			V.erase(V.begin() + range);//d
+		}
+	}
 		return 0;
 	}
 
